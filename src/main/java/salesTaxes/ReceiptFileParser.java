@@ -53,11 +53,15 @@ public class ReceiptFileParser {
                  */
                 assert priceSplit != -1 : "Receipt formatting error, could not find 'at' word";
 
-                itemName = line.substring(line.indexOf(linePieces[0]) + 2, priceSplit-1);
+                itemName = line.substring(line.indexOf(linePieces[0]) + 2, priceSplit - 1);
                 receiptGetSet.setItemName(itemName); // Set item's name.
 
                 itemPrice = Double.parseDouble(line.substring(priceSplit + 2));
                 receiptGetSet.setItemPrice(itemPrice); // Set item's price.
+
+                // Calculate item's price with taxes.
+                ReceiptTaxesCalc.calculateItemTax(isImported, noTax,
+                        receiptGetSet);
 
             }
 

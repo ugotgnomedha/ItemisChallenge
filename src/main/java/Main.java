@@ -1,4 +1,5 @@
 import salesTaxes.ReceiptFileParser;
+import salesTaxes.ReceiptTaxesCalc;
 
 import java.io.File;
 
@@ -11,5 +12,12 @@ public class Main {
 
         ReceiptFileParser receiptFileParser =
                 new ReceiptFileParser(receiptFile);
+
+        double salesTaxes = receiptFileParser.receiptGetSet.getReceiptTotalTaxPrice() -
+                receiptFileParser.receiptGetSet.getReceiptTotalPrice();
+
+        System.out.println("Sales Taxes: " + ReceiptTaxesCalc.roundPrice(salesTaxes));
+        System.out.println("Total: " + ReceiptTaxesCalc.roundPrice(receiptFileParser.receiptGetSet.getReceiptTotalTaxPrice()));
+
     }
 }
