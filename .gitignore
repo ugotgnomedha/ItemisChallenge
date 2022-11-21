@@ -8,3 +8,5 @@
 /httpRequests/
 #Ignore .log files
 *.log
+*.iml
+/target
